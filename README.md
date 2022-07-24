@@ -1,5 +1,5 @@
 ## Revisiting DP-Means: Fast Scalable Algorithms via Parallelism and Delayed Cluster Creation
-[Paper](https://openreview.net/pdf?id=rnzVBD8jqlq)
+[Paper](https://openreview.net/pdf?id=rnzVBD8jqlq) <br>
 The supplied code has 3 parts -
 
 * The cluster directory, which contains an extension to sklearn with our proposed algorithms, PDC-DP-Means and it's MiniBatch version.
