@@ -51,3 +51,5 @@ If you use this code for your work, please cite the following:
   year={2022}
 }
 ```
+### License 
+While our additional code is udner the GPL license, some code snippets here are taking from sklearn, and using them (e.g. the code under `cluster` directory is subjected to sklearn license.
