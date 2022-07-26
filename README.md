@@ -2,31 +2,33 @@
 [Paper](https://openreview.net/pdf?id=rnzVBD8jqlq) <br>
 The supplied code has 3 parts -
 
-* The cluster directory, which contains an extension to sklearn with our proposed algorithms, PDC-DP-Means and it's MiniBatch version.
+* The cluster directory, which contains an extension to sklearn with our proposed algorithms, PDC-DP-Means and its MiniBatch version.
 * the file `date_pdpmeans.py` which contains our implementation of DACE (in three versions, see below) and PDP-Means.
-* Three notebooks which contains the experiment with the other non-parametric methods.
+* Three notebooks that contain the experiment with the other non-parametric methods.
 
 ### PDC-DP-Means and MiniBatch PDC-DP-Means
 
 In order to install this, you must clone scikit-learn from: `https://github.com/scikit-learn/scikit-learn.git`.
 
-Navigate the directory `sklearn/cluster`, and replace the files `__init__.py`, `_k_means_lloyd.pyx` and `_kmeans.py` with the respective files under the `cluster` directory.
-Next, you need to install sklearn from source, follow the directions here: https://scikit-learn.org/stable/developers/advanced_installation.html#install-bleeding-edge.
+Navigate to the directory `sklearn/cluster` and replace the files `__init__.py`, `_k_means_lloyd.pyx` and `_kmeans.py` with the respective files under the `cluster` directory.
+Next, you need to install sklearn from source. To do so, follow the directions here: https://scikit-learn.org/stable/developers/advanced_installation.html#install-bleeding-edge.
 
-Now, in order to use it, you can simply use `from sklearn.cluster import MiniBatchDPMeans, DPMeans`, the parameters are the same as the `K-Means` counterpart:
+Now, in order to use it, you can simply use `from sklearn.cluster import MiniBatchDPMeans, DPMeans`. In general, the parameters are the same as the `K-Means` counterpart:
 https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
 
 https://scikit-learn.org/stable/modules/generated/sklearn.cluster.MiniBatchKMeans.html
 
-The differences are that instead of number of `n_clusters`, parameter, there is a new parameter `delta` (replacement for lambda, which is reserved in Python),  and in the case of DPMeans, the `algorithm` parameter is removed.
+The only differences are:
+1) instead of the `n_clusters` parameter (which stands, in K-Means, for the number fo clusters), there is a new parameter called `delta` (in our papers it was lambda but avoided this vairable name here since lambda is a reserved word in Python);
+2) When DPMeans is used the `algorithm` parameter is removed.
 
 ### DACE and PDP-Means
 
 In the file `dace_dpmeans.py` there are 4 relevant algorithms -
 
-`parallel_dp(data,delta,processes,iters)` - PDP-Means , as before, delta replaces lambda, the data is the data, processes is the amount of parallelization, and iters is the maximum iterations (it will stop before if converged).
+`parallel_dp(data,delta,processes,iters)' - PDP-Means.  As before, delta replaces lambda, `data' is the data, 'processes' is the amount of parallelization, and `iters' is the maximum iterations (it will stop before if converged).
 
-`DACE(data,delta,num_of_processes)` - The original DACE, as before, delta replaces lambda, the data is the data, num_of_processes is the amount of parallelization.
+`DACE(data,delta,num_of_processes)` - The original DACE algorithm. as before, delta replaces lambda, 'data' is the data, num_of_processes is the amount of parallelization.
 
 `DACE_DDP(data,delta,num_of_processes)` - DACE using PDC-DP-Means, but with no inner parallelization.
 
