@@ -54,4 +54,4 @@ If you use this code for your work, please cite the following:
 }
 ```
 ### License 
-While our additional code is under the GPL license, some code snippets here are taking from sklearn, and using them (e.g. the code under `cluster` directory is subjected to sklearn license.
+While our additional code is under the GPL license, some code snippets here are taken from sklearn, and using them (e.g., the code under the `cluster` directory) is subject to sklearn's license.
