@@ -1,5 +1,21 @@
-## Revisiting DP-Means: Fast Scalable Algorithms via Parallelism and Delayed Cluster Creation
+# Revisiting DP-Means: Fast Scalable Algorithms via Parallelism and Delayed Cluster Creation
 [Paper](https://openreview.net/pdf?id=rnzVBD8jqlq) <br>
+
+## Introduction
+DP-means (Kulis and Jordan, ICML 2012), a nonparametric generalization of K-means, extends the latter to the case where the
+number of clusters is unknown. Unlike K-means, however, DP-means is hard to parallelize, a limita-
+tion hindering its usage in large-scale tasks. This work bridges this practicality gap by rendering the DP-means approach a viable, fast, and highly-
+scalable solution. In our paper, we first study the strengths and weaknesses of previous attempts to parallelize
+the DP-means algorithm. Next, we propose a new parallel algorithm, called PDC-DP-Means (Parallel Delayed Cluster DP-Means), based in part on
+delayed creation of clusters. Compared with DP-Means, PDC-DP-Means provides not only a major speedup but also performance gains. Finally, we
+propose two extensions of PDC-DP-Means. The first combines it with an existing method, leading to further speedups. The second extends PDC-DP-
+Means to a Mini-Batch setting (with an optional support for an online mode), allowing for another major speedup. We verify the utility of the pro-
+posed methods on multiple datasets. We also show that the proposed methods outperform other non-parametric methods (e.g., DBSCAN). Our highly-
+efficient code, available in this git repository, can be used to reproduce our experiments. 
+
+## Code
+
+
 The supplied code has 3 parts -
 
 * The cluster directory, which contains an extension to sklearn with our proposed algorithms, PDC-DP-Means and its MiniBatch version.
