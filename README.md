@@ -7,7 +7,7 @@ number of clusters is unknown. Unlike K-means, however, DP-means is hard to para
 
 ## Code
 
-
+The cde described here is under the folder `paper_code`.
 The supplied code has 3 parts -
 
 * The cluster directory, which contains an extension to sklearn with our proposed algorithms, PDC-DP-Means and its MiniBatch version.
