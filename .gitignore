@@ -1,0 +1,22 @@
+# Compiled Python files
+__pycache__/
+*.pyc
+
+# Compiled Cython files
+*.so
+*.pyd
+*.dll
+*.c
+*.cpp
+
+# Sphinx output directory
+docs/_build/
+
+# Distribution packages
+dist/
+build/
+*.egg-info/
+
+# Miscellaneous
+*.swp
+.DS_Store
