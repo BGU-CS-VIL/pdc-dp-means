@@ -58,7 +58,8 @@
 # )
 
 from setuptools import setup, find_packages,Extension
-from Cython.Build import cythonize
+# from Cython.Build import cythonize
+from distutils.command.build_ext import build_ext
 import numpy
 import os
 import sklearn
@@ -90,9 +91,16 @@ version = ns["__version__"]
 
 # create_symlink(sklearn_path, link_path)
 
+# ext_modules=[Extension("pdc_dp_means.dp_means_cython",
+#     sources = ['pdc_dp_means/dp_means_cython.pyx'],
+#     include_dirs=[numpy.get_include()])]#, os.path.dirname(link_path)])]
+
+
 ext_modules=[Extension("pdc_dp_means.dp_means_cython",
-    sources = ['pdc_dp_means/dp_means_cython.pyx'],
+    sources = ['pdc_dp_means/dp_means_cython.c'],
     include_dirs=[numpy.get_include()])]#, os.path.dirname(link_path)])]
+
+
 
 setup(
     name='pdc-dp-means',
@@ -118,7 +126,8 @@ setup(
         'scikit-learn'
         # add any other test dependencies here
     ],
-    ext_modules=cythonize(ext_modules),
+    ext_modules=ext_modules,
+    cmdclass={'build_ext': build_ext},
     project_urls={
           "Source": "https://github.com/BGU-CS-VIL/pdc-dp-means",
           "Tracker": "https://github.com/BGU-CS-VIL/pdc-dp-means",
