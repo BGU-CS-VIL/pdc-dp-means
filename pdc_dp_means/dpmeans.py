@@ -366,7 +366,6 @@ class DPMeans(KMeans):
                 X += X_mean
             best_centers += X_mean
         self.n_clusters = best_centers.shape[0]
-        distinct_clusters = len(set(best_labels))
         self.cluster_centers_ = best_centers
         self.labels_ = best_labels
         self.inertia_ = best_inertia

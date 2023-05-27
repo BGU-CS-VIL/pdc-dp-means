@@ -11,7 +11,7 @@ def test_dpmeans():
 
     # Create a DPMeans object and fit the data
     dpmeans = DPMeans(n_clusters=1, delta=25, random_state=42)
-    labels = dpmeans.fit(X)
+    dpmeans.fit(X)
 
     # Check that the number of clusters is correct
     assert dpmeans.n_clusters == 6
