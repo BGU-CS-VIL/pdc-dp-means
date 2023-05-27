@@ -6,7 +6,6 @@ __pycache__/
 *.so
 *.pyd
 *.dll
-*.c
 *.cpp
 
 # Sphinx output directory

@@ -1,9 +1,7 @@
 import numpy as np
 from sklearn.datasets import make_blobs
 from sklearn.metrics import pairwise_distances_argmin
-from sklearn.utils import check_random_state
 from pdc_dp_means import MiniBatchDPMeans
-from matplotlib import pyplot as plt
 from scipy.spatial.distance import cdist
 from sklearn.metrics import normalized_mutual_info_score
 
@@ -16,6 +14,7 @@ def create_stream_from_data(data, gt, sample_count):
         stream_batches.append(data[i * sample_count : (i + 1) * sample_count, :])
         stream_labels.append(gt[i * sample_count : (i + 1) * sample_count])
     return stream_batches, stream_labels
+
 
 def test_minibatch_dpmeans_partial_fit():
     # Generate some random data
@@ -64,10 +63,9 @@ def test_minibatch_dpmeans():
     # Generate some random data
     X, y = make_blobs(n_samples=2000, centers=10, random_state=42)
 
-
     # Create a MiniBatchDPMeans object and fit the data
     dpmeans = MiniBatchDPMeans(n_clusters=1, delta=22, random_state=42)
-    labels = dpmeans.fit_predict(X)
+    dpmeans.fit_predict(X)
 
     # Check that the number of clusters is correct
     assert dpmeans.n_clusters == 10
@@ -96,4 +94,3 @@ def test_minibatch_dpmeans():
     sample_weight = np.ones(X.shape[0])
     sample_weight[0] = 0.0
     dpmeans.fit(X, sample_weight=sample_weight)
-
