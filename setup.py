@@ -4,7 +4,6 @@ from setuptools import setup, find_packages, Extension
 from distutils.command.build_ext import build_ext
 import numpy
 import os
-import sklearn
 
 
 def pyload(name):

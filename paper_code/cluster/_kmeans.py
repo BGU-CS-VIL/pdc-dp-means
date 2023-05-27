@@ -146,7 +146,9 @@ def kmeans_plusplus(
     return centers, indices
 
 
-def _kmeans_plusplus(X, n_clusters, x_squared_norms, random_state, n_local_trials=None):
+def _kmeans_plusplus(
+    X, n_clusters, x_squared_norms, random_state, n_local_trials=None
+):
     """Computational component for initialization of n_clusters by
     k-means++. Prior validation of data is assumed.
 
@@ -756,7 +758,9 @@ def _dpmeans_single_lloyd(
             if max_clusters is None or max_clusters > centers.shape[0]:
                 if max_index[0] != -1 and max_distance[0] > delta:
                     centers = np.vstack((centers, X[max_index])).astype(X.dtype)
-                    centers_new = np.vstack((centers_new, X[max_index])).astype(X.dtype)
+                    centers_new = np.vstack((centers_new, X[max_index])).astype(
+                        X.dtype
+                    )
                     weight_in_clusters = np.hstack([weight_in_clusters, [0]]).astype(
                         X.dtype
                     )
@@ -1314,7 +1318,10 @@ class KMeans(TransformerMixin, ClusterMixin, BaseEstimator):
         for i in range(self._n_init):
             # Initialize centers
             centers_init = self._init_centroids(
-                X, x_squared_norms=x_squared_norms, init=init, random_state=random_state
+                X,
+                x_squared_norms=x_squared_norms,
+                init=init,
+                random_state=random_state,
             )
             if self.verbose:
                 print("Initialization complete")
@@ -1606,7 +1613,10 @@ class DPMeans(KMeans):
         for i in range(self._n_init):
             # Initialize centers
             centers_init = self._init_centroids(
-                X, x_squared_norms=x_squared_norms, init=init, random_state=random_state
+                X,
+                x_squared_norms=x_squared_norms,
+                init=init,
+                random_state=random_state,
             )
 
             if self.verbose:
@@ -2261,7 +2271,9 @@ class MiniBatchKMeans(KMeans):
             # Perform the iterative optimization until convergence
             for i in range(n_steps):
                 # Sample a minibatch from the full dataset
-                minibatch_indices = random_state.randint(0, n_samples, self._batch_size)
+                minibatch_indices = random_state.randint(
+                    0, n_samples, self._batch_size
+                )
 
                 # Perform the actual update step on the minibatch data
                 batch_inertia = _mini_batch_step(
@@ -2948,7 +2960,9 @@ class MiniBatchDPMeans(KMeans):
             # Perform the iterative optimization until convergence
             for i in range(n_steps):
                 # Sample a minibatch from the full dataset
-                minibatch_indices = random_state.randint(0, n_samples, self._batch_size)
+                minibatch_indices = random_state.randint(
+                    0, n_samples, self._batch_size
+                )
                 tic = time()
                 # Perform the actual update step on the minibatch data
                 (
