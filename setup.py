@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages, Extension
 
-# from Cython.Build import cythonize
+from Cython.Build import cythonize
 from distutils.command.build_ext import build_ext
 import numpy
 import os
@@ -72,6 +72,8 @@ setup(
         "Programming Language :: Python :: 3.11",
     ],
     install_requires=[
+        "numpy",
+        "Cython"
     ],
     tests_require=[
         "pytest",
@@ -80,8 +82,8 @@ setup(
         "scipy"
         # add any other test dependencies here
     ],
-    ext_modules=ext_modules,
-    cmdclass={"build_ext": build_ext},
+    ext_modules=cythonize(ext_modules),
+    # cmdclass={"build_ext": build_ext},
     project_urls={
         "Source": "https://github.com/BGU-CS-VIL/pdc-dp-means",
         "Tracker": "https://github.com/BGU-CS-VIL/pdc-dp-means",
