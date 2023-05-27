@@ -78,7 +78,9 @@ setup(
     ],
     tests_require=[
         "pytest",
-        "scikit-learn"
+        "scikit-learn",
+        "numpy",
+        "scipy"
         # add any other test dependencies here
     ],
     ext_modules=ext_modules,
