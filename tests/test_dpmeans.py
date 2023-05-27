@@ -1,10 +1,6 @@
-
 import numpy as np
 from sklearn.datasets import make_blobs
-from sklearn.metrics import pairwise_distances_argmin
-from sklearn.utils import check_random_state
 from pdc_dp_means import DPMeans
-from matplotlib import pyplot as plt
 from scipy.spatial.distance import cdist
 from sklearn.metrics import normalized_mutual_info_score
 
@@ -13,9 +9,8 @@ def test_dpmeans():
     # Generate some random data
     X, y = make_blobs(n_samples=1000, centers=6, random_state=42)
 
-
     # Create a DPMeans object and fit the data
-    dpmeans = DPMeans(n_clusters=1,delta = 25, random_state=42)
+    dpmeans = DPMeans(n_clusters=1, delta=25, random_state=42)
     labels = dpmeans.fit(X)
 
     # Check that the number of clusters is correct
@@ -53,8 +48,7 @@ def test_dpmeans():
     X_sparse = X[:500]
     dpmeans.fit(X_sparse)
 
-
     # Check that the fit method works with a maximum number of clusters
-    dpmeans = DPMeans(n_clusters=1, max_clusters=10,delta=1, random_state=42)
+    dpmeans = DPMeans(n_clusters=1, max_clusters=10, delta=1, random_state=42)
     dpmeans.fit(X)
     assert dpmeans.n_clusters == 10

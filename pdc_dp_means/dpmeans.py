@@ -6,7 +6,12 @@ import scipy.sparse as sp
 
 from sklearn.cluster._k_means_common import CHUNK_SIZE, _inertia_dense
 from sklearn.cluster._k_means_lloyd import lloyd_iter_chunked_dense
-from sklearn.cluster._kmeans import KMeans, _labels_inertia, _labels_inertia_threadpool_limit, _minibatch_update_dense
+from sklearn.cluster._kmeans import (
+    KMeans,
+    _labels_inertia,
+    _labels_inertia_threadpool_limit,
+    _minibatch_update_dense,
+)
 from sklearn.exceptions import ConvergenceWarning
 from sklearn.utils import check_array, check_random_state, deprecated
 from sklearn.utils._openmp_helpers import _openmp_effective_n_threads
@@ -101,7 +106,7 @@ def _dpmeans_single_lloyd(
                     break
                 else:
                     # No strict convergence, check for tol based convergence.
-                    center_shift_tot = (center_shift ** 2).sum()
+                    center_shift_tot = (center_shift**2).sum()
                     if center_shift_tot <= tol:
                         if verbose:
                             print(
@@ -129,8 +134,6 @@ def _dpmeans_single_lloyd(
     inertia = _inertia(X, sample_weight, centers, labels, n_threads)
 
     return labels, inertia, centers, i + 1, 0, iter_time
-
-
 
 
 class DPMeans(KMeans):
@@ -226,6 +229,7 @@ class DPMeans(KMeans):
     array([[10.,  2.],
         [ 1.,  2.]])
     """
+
     def __init__(
         self,
         n_clusters=8,
@@ -240,8 +244,6 @@ class DPMeans(KMeans):
         delta=1.0,
         max_clusters=None,
     ):
-        
-
         super().__init__(
             n_clusters=n_clusters,
             init=init,
@@ -321,7 +323,11 @@ class DPMeans(KMeans):
         for i in range(self._n_init):
             # Initialize centers
             centers_init = self._init_centroids(
-                X, x_squared_norms=x_squared_norms, init=init, random_state=random_state, sample_weight=sample_weight
+                X,
+                x_squared_norms=x_squared_norms,
+                init=init,
+                random_state=random_state,
+                sample_weight=sample_weight,
             )
 
             if self.verbose:
@@ -414,7 +420,6 @@ def _labels_inertia_with_min_sample(
     max_distance = np.full(1, -1, dtype=centers.dtype)
     weight_in_clusters = np.zeros(n_clusters, dtype=centers.dtype)
     center_shift = np.zeros_like(weight_in_clusters)
-
 
     _labels = lloyd_iter_chunked_dense_with_min_sample
     _inertia = _inertia_dense
@@ -562,7 +567,7 @@ def _mini_batch_step_with_max_distance(
 
 
 class MiniBatchDPMeans(KMeans):
-    '''
+    """
     Parameters
     ----------
 
@@ -718,7 +723,8 @@ class MiniBatchDPMeans(KMeans):
         array([1, 0], dtype=int32)
 
     
-    '''
+    """
+
     def __init__(
         self,
         n_clusters=1,
@@ -736,7 +742,6 @@ class MiniBatchDPMeans(KMeans):
         reassignment_ratio=0.01,
         delta=1.0,
     ):
-
         super().__init__(
             n_clusters=n_clusters,
             init=init,
@@ -965,7 +970,7 @@ class MiniBatchDPMeans(KMeans):
                 init=init,
                 random_state=random_state,
                 init_size=self._init_size,
-                sample_weight=sample_weight
+                sample_weight=sample_weight,
             )
 
             # Compute inertia on a validation set.
@@ -1029,8 +1034,12 @@ class MiniBatchDPMeans(KMeans):
                 iter_time.append(toc)
                 new_cluster = False
                 if max_index != -1 and max_distance > self.delta:
-                    centers = np.vstack((centers, X[minibatch_indices[max_index]])).astype(X.dtype)
-                    centers_new = np.vstack((centers_new, X[minibatch_indices[max_index]])).astype(X.dtype)
+                    centers = np.vstack(
+                        (centers, X[minibatch_indices[max_index]])
+                    ).astype(X.dtype)
+                    centers_new = np.vstack(
+                        (centers_new, X[minibatch_indices[max_index]])
+                    ).astype(X.dtype)
                     self.n_clusters += 1
                     self._counts = np.hstack([self._counts, [1]]).astype(X.dtype)
                     new_cluster = True

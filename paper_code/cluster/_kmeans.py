@@ -515,7 +515,7 @@ def _kmeans_single_elkan(
             break
         else:
             # No strict convergence, check for tol based convergence.
-            center_shift_tot = (center_shift ** 2).sum()
+            center_shift_tot = (center_shift**2).sum()
             if center_shift_tot <= tol:
                 if verbose:
                     print(
@@ -658,7 +658,7 @@ def _kmeans_single_lloyd(
                 break
             else:
                 # No strict convergence, check for tol based convergence.
-                center_shift_tot = (center_shift ** 2).sum()
+                center_shift_tot = (center_shift**2).sum()
                 if center_shift_tot <= tol:
                     if verbose:
                         print(
@@ -779,7 +779,7 @@ def _dpmeans_single_lloyd(
                     break
                 else:
                     # No strict convergence, check for tol based convergence.
-                    center_shift_tot = (center_shift ** 2).sum()
+                    center_shift_tot = (center_shift**2).sum()
                     if center_shift_tot <= tol:
                         if verbose:
                             print(
@@ -1054,7 +1054,6 @@ class KMeans(TransformerMixin, ClusterMixin, BaseEstimator):
         copy_x=True,
         algorithm="lloyd",
     ):
-
         self.n_clusters = n_clusters
         self.init = init
         self.max_iter = max_iter
@@ -1528,7 +1527,6 @@ class DPMeans(KMeans):
         delta=1.0,
         max_clusters=None,
     ):
-
         super().__init__(
             n_clusters=n_clusters,
             init=init,
@@ -1991,7 +1989,6 @@ class MiniBatchKMeans(KMeans):
         n_init=3,
         reassignment_ratio=0.01,
     ):
-
         super().__init__(
             n_clusters=n_clusters,
             init=init,
@@ -2675,7 +2672,6 @@ class MiniBatchDPMeans(KMeans):
         reassignment_ratio=0.01,
         delta=1.0,
     ):
-
         super().__init__(
             n_clusters=n_clusters,
             init=init,
@@ -2976,8 +2972,12 @@ class MiniBatchDPMeans(KMeans):
                 iter_time.append(toc)
                 new_cluster = False
                 if max_index != -1 and max_distance > self.delta:
-                    centers = np.vstack((centers, X[minibatch_indices[max_index]])).astype(X.dtype)
-                    centers_new = np.vstack((centers_new, X[minibatch_indices[max_index]])).astype(X.dtype)
+                    centers = np.vstack(
+                        (centers, X[minibatch_indices[max_index]])
+                    ).astype(X.dtype)
+                    centers_new = np.vstack(
+                        (centers_new, X[minibatch_indices[max_index]])
+                    ).astype(X.dtype)
                     self.n_clusters += 1
                     self._counts = np.hstack([self._counts, [1]]).astype(X.dtype)
                     new_cluster = True

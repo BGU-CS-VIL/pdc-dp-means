@@ -1,4 +1,1 @@
-from .dpmeans import (
-    MiniBatchDPMeans,
-    DPMeans
-)
+from .dpmeans import MiniBatchDPMeans, DPMeans
