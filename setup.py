@@ -72,9 +72,6 @@ setup(
         "Programming Language :: Python :: 3.11",
     ],
     install_requires=[
-        "numpy",
-        "scikit-learn",
-        # add any other dependencies here
     ],
     tests_require=[
         "pytest",
