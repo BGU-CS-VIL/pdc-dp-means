@@ -1,18 +1,17 @@
 from time import time
-from warnings import warn
+
 
 import numpy as np
 import scipy.sparse as sp
 
-from sklearn.cluster._k_means_common import CHUNK_SIZE, _inertia_dense
+from sklearn.cluster._k_means_common import _inertia_dense
 from sklearn.cluster._k_means_lloyd import lloyd_iter_chunked_dense
 from sklearn.cluster._kmeans import (
     KMeans,
-    _labels_inertia,
     _labels_inertia_threadpool_limit,
     _minibatch_update_dense,
 )
-from sklearn.exceptions import ConvergenceWarning
+
 from sklearn.utils import check_array, check_random_state, deprecated
 from sklearn.utils._openmp_helpers import _openmp_effective_n_threads
 from sklearn.utils.extmath import row_norms

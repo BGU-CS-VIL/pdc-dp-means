@@ -65,7 +65,7 @@ def test_minibatch_dpmeans():
 
     # Create a MiniBatchDPMeans object and fit the data
     dpmeans = MiniBatchDPMeans(n_clusters=1, delta=22, random_state=42)
-    labels = dpmeans.fit_predict(X)
+    dpmeans.fit_predict(X)
 
     # Check that the number of clusters is correct
     assert dpmeans.n_clusters == 10
