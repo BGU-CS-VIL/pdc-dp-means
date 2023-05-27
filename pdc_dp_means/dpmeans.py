@@ -53,7 +53,6 @@ def _dpmeans_single_lloyd(
     strict_convergence = False
     iter_time = []
     # all_centers = [None]
-    small_clusters = 0
     # Threadpoolctl context to limit the number of threads in second level of
     # nested parallelism (i.e. BLAS) to avoid oversubsciption.
     with threadpool_limits(limits=1, user_api="blas"):
