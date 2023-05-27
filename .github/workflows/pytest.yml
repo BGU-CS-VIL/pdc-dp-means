@@ -20,7 +20,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install ruff pytest scipy
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           pip install -e .
       - name: Lint with ruff
         run: |
