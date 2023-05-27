@@ -12,32 +12,30 @@ jobs:
       - name: Check out pdc-dp-means
         uses: actions/checkout@v2
 
-      - name: Set up Python 3.8
+      - name: Set up Python
         uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
 
       - name: Install build dependencies
         run: |
           python -m pip install --upgrade pip
           pip install setuptools wheel
 
-      - name: Clone and build scikit-learn
-        run: |
-          git clone https://github.com/scikit-learn/scikit-learn.git
-          cd scikit-learn
-          pip install -e .
-          cd ..
-
-      - name: Create symbolic link
-        run: |
-          pwd
-          ln -s scikit-learn/sklearn .
-
       - name: Build wheels with cibuildwheel
         uses: pypa/cibuildwheel@v2.12.3
         with:
           output-dir: wheelhouse
+        env:
+          CIBW_BUILD: "cp38-* cp39-*"
+          CIBW_BEFORE_BUILD: |
+            pip install -U cython
+            git clone https://github.com/scikit-learn/scikit-learn.git
+            cd scikit-learn
+            python -m pip install -e .
+            cd ..
+            if [ ! -L sklearn ]; then
+              ln -s scikit-learn/sklearn .
+            fi
+          CIBW_TEST_COMMAND: "pip install {project}/dist/*.whl && pytest"
 
       - name: Publish artifacts
         uses: actions/upload-artifact@v2
