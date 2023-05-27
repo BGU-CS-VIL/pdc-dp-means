@@ -27,6 +27,7 @@ jobs:
           git clone https://github.com/scikit-learn/scikit-learn.git
           cd scikit-learn
           pip install -e .
+          cd ..
 
       - name: Create symbolic link
         run: |
