@@ -35,7 +35,7 @@ jobs:
             if [ ! -L sklearn ]; then
               ln -s scikit-learn/sklearn .
             fi
-          CIBW_TEST_COMMAND: "pip install dist/*.whl && pytest"
+          CIBW_TEST_COMMAND: pytest {package}/tests
 
       - name: Publish artifacts
         uses: actions/upload-artifact@v2
