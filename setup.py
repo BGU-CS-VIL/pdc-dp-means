@@ -36,18 +36,18 @@ version = ns["__version__"]
 
 # create_symlink(sklearn_path, link_path)
 
-# ext_modules=[Extension("pdc_dp_means.dp_means_cython",
-#     sources = ['pdc_dp_means/dp_means_cython.pyx'],
-#     include_dirs=[numpy.get_include()])]#, os.path.dirname(link_path)])]
+ext_modules=[Extension("pdc_dp_means.dp_means_cython",
+    sources = ['pdc_dp_means/dp_means_cython.pyx'],
+    include_dirs=[numpy.get_include()])]#, os.path.dirname(link_path)])]
 
 
-ext_modules = [
-    Extension(
-        "pdc_dp_means.dp_means_cython",
-        sources=["pdc_dp_means/dp_means_cython.c"],
-        include_dirs=[numpy.get_include()],
-    )
-]  # , os.path.dirname(link_path)])]
+# ext_modules = [
+#     Extension(
+#         "pdc_dp_means.dp_means_cython",
+#         sources=["pdc_dp_means/dp_means_cython.c"],
+#         include_dirs=[numpy.get_include()],
+#     )
+# ]  # , os.path.dirname(link_path)])]
 
 
 setup(
@@ -72,8 +72,6 @@ setup(
         "Programming Language :: Python :: 3.11",
     ],
     install_requires=[
-        "numpy",
-        "Cython"
     ],
     tests_require=[
         "pytest",

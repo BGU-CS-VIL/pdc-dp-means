@@ -327,7 +327,6 @@ class DPMeans(KMeans):
                 x_squared_norms=x_squared_norms,
                 init=init,
                 random_state=random_state,
-                sample_weight=sample_weight,
             )
 
             if self.verbose:
@@ -969,7 +968,6 @@ class MiniBatchDPMeans(KMeans):
                 init=init,
                 random_state=random_state,
                 init_size=self._init_size,
-                sample_weight=sample_weight,
             )
 
             # Compute inertia on a validation set.
@@ -1141,7 +1139,6 @@ class MiniBatchDPMeans(KMeans):
                 x_squared_norms=x_squared_norms,
                 init=init,
                 random_state=self._random_state,
-                sample_weight=sample_weight,
                 init_size=self._init_size,
             )
 
