@@ -35,6 +35,7 @@ jobs:
             if [ ! -L sklearn ]; then
               ln -s scikit-learn/sklearn .
             fi
+          CIBW_TEST_REQUIRES: pytest numpy scikit-learn scipy
           CIBW_TEST_COMMAND: pytest {package}/tests
 
       - name: Publish artifacts
