@@ -96,3 +96,8 @@ def test_minibatch_dpmeans():
     sample_weight = np.ones(X.shape[0])
     sample_weight[0] = 0.0
     dpmeans.fit(X, sample_weight=sample_weight)
+
+
+if __name__ == "__main__":
+    test_minibatch_dpmeans_partial_fit()
+    test_minibatch_dpmeans()

@@ -54,3 +54,6 @@ def test_dpmeans():
     dpmeans = DPMeans(n_clusters=1, max_clusters=10, delta=1, random_state=42)
     dpmeans.fit(X)
     assert dpmeans.n_clusters == 10
+
+if __name__ == "__main__":
+    test_dpmeans()
