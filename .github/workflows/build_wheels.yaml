@@ -63,38 +63,38 @@ jobs:
           python-build-version: '38'
           # arch-version: 'manylinux_x86_64'
 
-  build_py39:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v2
-      - name: Build and test wheels for Python 3.9
-        uses: ./.github/actions/build-wheels
-        with:
-          python-version: '3.9'
-          python-build-version: '39'
-          # arch-version: 'manylinux_x86_64'
+  # build_py39:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Check out code
+  #       uses: actions/checkout@v2
+  #     - name: Build and test wheels for Python 3.9
+  #       uses: ./.github/actions/build-wheels
+  #       with:
+  #         python-version: '3.9'
+  #         python-build-version: '39'
+  #         # arch-version: 'manylinux_x86_64'
 
-  build_py310:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v2
-      - name: Build and test wheels for Python 3.10
-        uses: ./.github/actions/build-wheels
-        with:
-          python-version: '3.10'
-          python-build-version: '310'
-          # arch-version: 'manylinux_x86_64'
+  # build_py310:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Check out code
+  #       uses: actions/checkout@v2
+  #     - name: Build and test wheels for Python 3.10
+  #       uses: ./.github/actions/build-wheels
+  #       with:
+  #         python-version: '3.10'
+  #         python-build-version: '310'
+  #         # arch-version: 'manylinux_x86_64'
 
-  build_py311:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v2
-      - name: Build and test wheels for Python 3.11
-        uses: ./.github/actions/build-wheels
-        with:
-          python-version: '3.11'
-          python-build-version: '311'
-          # arch-version: 'manylinux_x86_64'
+  # build_py311:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Check out code
+  #       uses: actions/checkout@v2
+  #     - name: Build and test wheels for Python 3.11
+  #       uses: ./.github/actions/build-wheels
+  #       with:
+  #         python-version: '3.11'
+  #         python-build-version: '311'
+  #         # arch-version: 'manylinux_x86_64'

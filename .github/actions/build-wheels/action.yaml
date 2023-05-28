@@ -41,7 +41,7 @@ runs:
         CIBW_BUILD: "cp${{ inputs.python-build-version }}-*"
         CIBW_MANYLINUX_X86_64_IMAGE: manylinux2014
         CIBW_MANYLINUX_I686_IMAGE: manylinux2014
-        CIBW_BEFORE_ALL: |
+        CIBW_BEFORE_TEST: |
           if [ "${CIBW_PLATFORM}" = "linux" ]; then
             arch="$(uname -m)"
             if [ "$arch" = "i686" ]; then
