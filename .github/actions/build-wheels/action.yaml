@@ -40,6 +40,7 @@ runs:
         CIBW_TEST_COMMAND: pytest {package}/tests
         CIBW_BUILD: "cp${{ inputs.python-build-version }}-*"
         CIBW_MANYLINUX_X86_64_IMAGE: manylinux2014
+        CIBW_MANYLINUX_I686_IMAGE: quay.io/pypa/manylinux2010_i686
 
     - name: Publish artifacts
       uses: actions/upload-artifact@v2
