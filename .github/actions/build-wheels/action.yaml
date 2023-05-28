@@ -1,0 +1,48 @@
+name: 'Build and test wheels'
+description: 'Builds wheels for a specific Python version'
+inputs:
+  python-version:
+    description: 'Python version'
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - name: Check out pdc-dp-means
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ inputs.python-version }}
+
+    - name: Install build dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install setuptools wheel
+      shell: bash
+
+    - name: Build wheels with cibuildwheel
+      uses: pypa/cibuildwheel@v2.12.3
+      with:
+        output-dir: wheelhouse
+      env:
+        CIBW_BEFORE_BUILD: |
+          pip install -U cython
+          git clone https://github.com/scikit-learn/scikit-learn.git
+          cd scikit-learn
+          git checkout 1.2.X
+          python -m pip install -e .
+          cd ..
+          if [ ! -L sklearn ]; then
+            ln -s scikit-learn/sklearn .
+          fi
+        CIBW_TEST_REQUIRES: pytest numpy scikit-learn
+        CIBW_TEST_COMMAND: pytest {package}/tests
+        CIBW_BUILD: cp${{ inputs.python-version }}-*
+        CIBW_MANYLINUX_X86_64_IMAGE: manylinux2014
+
+    - name: Publish artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        path: |
+          ./wheelhouse/*.whl
