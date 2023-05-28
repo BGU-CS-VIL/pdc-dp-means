@@ -2,8 +2,10 @@ import numpy as np
 from sklearn.datasets import make_blobs
 from sklearn.metrics import pairwise_distances_argmin
 from pdc_dp_means import MiniBatchDPMeans
-from scipy.spatial.distance import cdist
 from sklearn.metrics import normalized_mutual_info_score
+
+def cdist(XA, XB):
+    return np.sqrt(((XA[:, None] - XB)**2).sum(-1))
 
 
 def create_stream_from_data(data, gt, sample_count):

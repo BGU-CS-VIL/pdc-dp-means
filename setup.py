@@ -77,7 +77,6 @@ setup(
         "pytest",
         "scikit-learn",
         "numpy",
-        "scipy"
         # add any other test dependencies here
     ],
     ext_modules=cythonize(ext_modules),
