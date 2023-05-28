@@ -208,6 +208,7 @@
               python -m pip install -e .
               cd ..
               xcopy /E /I scikit-learn\sklearn sklearn
+              echo "Listing directory contents:"
               dir
               dir sklearn
             
