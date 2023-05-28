@@ -38,7 +38,7 @@ runs:
           fi
         CIBW_TEST_REQUIRES: pytest numpy scikit-learn
         CIBW_TEST_COMMAND: pytest {package}/tests
-        CIBW_BUILD: cp${{ inputs.python-version }}-${{ inputs.arch-version }}*
+        CIBW_BUILD: cp${{ inputs.python-version }}-${{ inputs.arch-version }}
         CIBW_MANYLINUX_X86_64_IMAGE: manylinux2014
 
     - name: Publish artifacts
