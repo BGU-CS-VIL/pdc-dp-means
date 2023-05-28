@@ -190,15 +190,19 @@
             output-dir: wheelhouse
           env:
             CIBW_BEFORE_BUILD: |
-              pip install -U cython
-              git clone https://github.com/scikit-learn/scikit-learn.git
-              cd scikit-learn
-              git checkout 1.2.X
-              python -m pip install -e .
-              cd ..
-              if [ ! -L sklearn ]; then
-                ln -s scikit-learn/sklearn .
-              fi
+                pip install -U cython
+                git clone https://github.com/scikit-learn/scikit-learn.git
+                cd scikit-learn
+                git checkout 1.2.X
+                python -m pip install -e .
+                cd ..
+                if [[ "${{ runner.os }}" == "Windows" ]]; then
+                  if not exist sklearn mklink /D sklearn scikit-learn\sklearn
+                else
+                  if [ ! -L sklearn ]; then
+                    ln -s scikit-learn/sklearn .
+                  fi
+                fi
             CIBW_TEST_REQUIRES: pytest numpy scikit-learn
             CIBW_TEST_COMMAND: pytest {package}/tests
             CIBW_ARCHS: all
