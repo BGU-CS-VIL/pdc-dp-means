@@ -201,14 +201,21 @@
               fi
           
             CIBW_BEFORE_BUILD_WINDOWS: |
+              echo "Installing Cython"
               pip install -U cython
+              echo "Cloning scikit-learn"
               git clone https://github.com/scikit-learn/scikit-learn.git
+              echo "Entering scikit-learn directory"
               cd scikit-learn
+              echo "Checking out 1.2.X"
               git checkout 1.2.X
+              echo "Installing scikit-learn"
               python -m pip install -e .
+              echo "Returning to root directory"
               cd ..
+              echo "Copying sklearn"
               xcopy /E /I scikit-learn\sklearn sklearn
-              echo "Listing directory contents:"
+              echo "Listing directory contents"
               dir
               dir sklearn
             
