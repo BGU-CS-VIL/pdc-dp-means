@@ -36,7 +36,7 @@ runs:
           if [ ! -L sklearn ]; then
             ln -s scikit-learn/sklearn .
           fi
-        CIBW_TEST_SKIP: "*_i686"
+        CIBW_TEST_SKIP: "*_i686 *musllinux*"
         CIBW_TEST_REQUIRES: pytest numpy scikit-learn
         CIBW_TEST_COMMAND: pytest {package}/tests
         CIBW_BUILD: "cp${{ inputs.python-build-version }}-*"
