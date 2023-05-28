@@ -30,6 +30,7 @@ jobs:
             pip install -U cython
             git clone https://github.com/scikit-learn/scikit-learn.git
             cd scikit-learn
+            git checkout 1.2.X
             python -m pip install -e .
             cd ..
             if [ ! -L sklearn ]; then
