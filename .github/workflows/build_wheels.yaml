@@ -54,6 +54,8 @@ jobs:
   build_py38:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out code
+        uses: actions/checkout@v2
       - name: Build and test wheels for Python 3.8
         uses: ./.github/actions/build-wheels
         with:
@@ -62,6 +64,8 @@ jobs:
   build_py39:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out code
+        uses: actions/checkout@v2
       - name: Build and test wheels for Python 3.9
         uses: ./.github/actions/build-wheels
         with:
@@ -70,6 +74,8 @@ jobs:
   build_py310:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out code
+        uses: actions/checkout@v2
       - name: Build and test wheels for Python 3.10
         uses: ./.github/actions/build-wheels
         with:
@@ -78,6 +84,8 @@ jobs:
   build_py311:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out code
+        uses: actions/checkout@v2
       - name: Build and test wheels for Python 3.11
         uses: ./.github/actions/build-wheels
         with:
