@@ -139,8 +139,7 @@
           uses: dawidd6/action-download-artifact@v2
           with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
-            workflow: Build Wheels.yml
-            name: wheelhouse
+            name: build_wheels
             path: dist
 
         - name: Publish to PyPI
