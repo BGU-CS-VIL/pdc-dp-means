@@ -7,7 +7,7 @@ sys.path.insert(0, os.path.abspath("../.."))
 # -- Project information
 
 project = "PDC-DP-Means"
-copyright = "2022, Or Dinari"
+copyright = "2023, Or Dinari"
 author = "Or Dinari"
 
 release = "0.1"
