@@ -127,7 +127,6 @@
         - name: Publish artifacts
           uses: actions/upload-artifact@v2
           with:
-            name: build_wheels
             path: |
               ./wheelhouse/*.whl
 
@@ -140,7 +139,7 @@
           uses: dawidd6/action-download-artifact@v2
           with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
-            name: build_wheels
+            name: artifact
             path: dist
 
         - name: Publish to PyPI
