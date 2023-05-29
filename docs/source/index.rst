@@ -1,7 +1,7 @@
 Welcome to PDC-DP-Means documentation!
 ======================================
 
-**PDC-DP-Means** is a Python library for running fast, scalable DP-Means or Mini-Batch DP-Means. It is built on top scikit-learn and numpy.
+**PDC-DP-Means** is a Python library for running fast, scalable DP-Means or Mini-Batch DP-Means. It is built on top of scikit-learn and numpy.
 
 Check out the :doc:`usage` section for further information, including
 how to :ref:`install <installation>` the project.
