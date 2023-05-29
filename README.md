@@ -33,7 +33,7 @@ Installation requires `scikit-learn>=1.2,<1.3` and `numpy >= 1.23.0`.
     plt.scatter(centers[:, 0], centers[:, 1], c='black', s=200, alpha=0.5)
     plt.show()
 
-
+One thing to note is that we replace the `\lambda` parameter from the paper with `delta` in the code, as `lambda` is a reserved word in python.
 
 ### Usage
 Please refer to the documentation: https://pdc-dp-means.readthedocs.io/en/latest/
