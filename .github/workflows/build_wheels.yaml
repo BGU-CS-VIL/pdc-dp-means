@@ -127,6 +127,7 @@
         - name: Publish artifacts
           uses: actions/upload-artifact@v2
           with:
+            name: build_wheels
             path: |
               ./wheelhouse/*.whl
 
