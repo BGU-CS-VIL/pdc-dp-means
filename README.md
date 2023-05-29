@@ -9,7 +9,6 @@ number of clusters is unknown. Unlike K-means, however, DP-means is hard to para
 ### Installation
 `pip install pdc-dp-means`
 
-Installation requires `scikit-learn>=1.2,<1.3` and `numpy >= 1.23.0`.
 ### Quick Start
 
     from sklearn.datasets import make_blobs
