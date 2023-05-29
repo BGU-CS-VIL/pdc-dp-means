@@ -136,9 +136,8 @@
 
       steps:
         - name: Download artifact
-          uses: dawidd6/action-download-artifact@v2
+          uses: actions/download-artifact@v2
           with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
             name: artifact
             path: dist
 
