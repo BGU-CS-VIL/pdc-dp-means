@@ -1,11 +1,13 @@
 # Parallel Delayed Cluster DP-Means
 
-## Revisiting DP-Means: Fast Scalable Algorithms via Parallelism and Delayed Cluster Creation
 [Paper](https://openreview.net/pdf?id=rnzVBD8jqlq) <br>
 
 ### Introduction
-DP-means (Kulis and Jordan, ICML 2012), a nonparametric generalization of K-means, extends the latter to the case where the
-number of clusters is unknown. Unlike K-means, however, DP-means is hard to parallelize, a limitation hindering its usage in large-scale tasks. This work bridges this practicality gap by rendering the DP-means approach a viable, fast, and highly-scalable solution. In our paper, we first study the strengths and weaknesses of previous attempts to parallelize the DP-means algorithm. Next, we propose a new parallel algorithm, called PDC-DP-Means (Parallel Delayed Cluster DP-Means), based in part on delayed creation of clusters. Compared with DP-Means, PDC-DP-Means provides not only a major speedup but also performance gains. Finally, we propose two extensions of PDC-DP-Means. The first combines it with an existing method, leading to further speedups. The second extends PDC-DP-Means to a Mini-Batch setting (with an optional support for an online mode), allowing for another major speedup. We verify the utility of the pro-posed methods on multiple datasets. We also show that the proposed methods outperform other non-parametric methods (e.g., DBSCAN). Our highly-efficient code, available in this git repository, can be used to reproduce our experiments. 
+The PDC-DP-Means package presents a highly optimized version of the DP-Means algorithm, introducing a new parallel algorithm, Parallel Delayed Cluster DP-Means (PDC-DP-Means), and a MiniBatch implementation for enhanced speed. These features cater to scalable and efficient cluster analysis where the number of clusters is unknown.
+
+In addition to offering major speed improvements, the PDC-DP-Means algorithm supports an optional online mode for real-time data processing. Its scikit-learn-like interface is user-friendly and designed for easy integration into existing data workflows. PDC-DP-Means outperforms other nonparametric methods, establishing its efficiency and scalability in the realm of clustering algorithms.
+
+See the paper for more details.
 
 
 ### Installation
