@@ -49,7 +49,7 @@ If you use this code for your work, please cite the following:
 
 ```
 @inproceedings{dinari2022revisiting,
-  title={Revisiting DP-Means: Fast Scalable Algorithms via Parallelism and Delayed Cluster Creation},
+  title={Revisiting {DP}-Means: Fast Scalable Algorithms via Parallelism and Delayed Cluster Creation},
   author={Dinari, Or and Freifeld, Oren},
   booktitle={The 38th Conference on Uncertainty in Artificial Intelligence},
   year={2022}
