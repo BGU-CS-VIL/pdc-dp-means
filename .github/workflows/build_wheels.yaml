@@ -148,6 +148,8 @@
     upload-to-pypi:
       needs: build_wheels
       runs-on: ubuntu-latest
+      permissions:
+        id-token: write
 
       steps:
         - name: Download artifact
@@ -158,8 +160,6 @@
 
         - name: Publish to PyPI
           uses: pypa/gh-action-pypi-publish@v1.4.2
-          with:
-            user: ${{ secrets.PYPI_USERNAME }}
-            password: ${{ secrets.PYPI_PASSWORD }}
+          with:            
             packages_dir: dist
             skip_existing: true
