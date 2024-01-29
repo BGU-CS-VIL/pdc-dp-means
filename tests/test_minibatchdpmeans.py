@@ -63,10 +63,10 @@ def test_minibatch_dpmeans_partial_fit():
 
 def test_minibatch_dpmeans():
     # Generate some random data
-    X, y = make_blobs(n_samples=2000, centers=10, random_state=42)
+    X, y = make_blobs(n_samples=3000, centers=10, random_state=42)
 
     # Create a MiniBatchDPMeans object and fit the data
-    dpmeans = MiniBatchDPMeans(n_clusters=1, delta=22, random_state=42)
+    dpmeans = MiniBatchDPMeans(n_clusters=1, delta=20, random_state=42)
     dpmeans.fit_predict(X)
 
     # Check that the number of clusters is correct
