@@ -159,7 +159,7 @@
             path: dist
 
         - name: Publish to PyPI
-          uses: pypa/gh-action-pypi-publish@v1.4.2
+          uses: pypa/gh-action-pypi-publish@v1.8.11
           with:            
-            packages_dir: dist
-            skip_existing: true
+            packages-dir: dist
+            skip-existing: true
